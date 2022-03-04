@@ -1,4 +1,4 @@
-package com.tier.scooters
+package com.tier.scooters.screens.main.presentation.view.activity
 
 import android.os.Bundle
 import androidx.activity.ComponentActivity
@@ -10,13 +10,13 @@ import androidx.compose.material.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.tooling.preview.Preview
-import com.tier.scooters.ui.theme.TierScootersTheme
+import com.tier.scooters.base.presentation.view.theme.TierScootersAppTheme
 
 class MainActivity : ComponentActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContent {
-            TierScootersTheme {
+            TierScootersAppTheme {
                 // A surface container using the 'background' color from the theme
                 Surface(
                     modifier = Modifier.fillMaxSize(),
@@ -37,7 +37,7 @@ fun Greeting(name: String) {
 @Preview(showBackground = true)
 @Composable
 fun DefaultPreview() {
-    TierScootersTheme {
+    TierScootersAppTheme {
         Greeting("Android")
     }
 }

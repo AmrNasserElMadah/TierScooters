@@ -1,4 +1,4 @@
-package com.tier.scooters.ui.theme
+package com.tier.scooters.base.presentation.view.theme
 
 import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.material.Shapes

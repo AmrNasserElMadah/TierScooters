@@ -33,6 +33,64 @@
           ]
         }
       }
+    },
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:297428384518:android:e86aa7fd5f84bbd59abc87",
+        "android_client_info": {
+          "package_name": "com.tier.scooters.development"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "297428384518-m7to44928fvmo3m17d2nij4bq74e5ob5.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyA-kF41CYsucoyafTwPH8mENYdka0ojDaA"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "297428384518-m7to44928fvmo3m17d2nij4bq74e5ob5.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    },
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:297428384518:android:b6285f945353fc3d9abc87",
+        "android_client_info": {
+          "package_name": "com.tier.scooters.staging"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "297428384518-m7to44928fvmo3m17d2nij4bq74e5ob5.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyA-kF41CYsucoyafTwPH8mENYdka0ojDaA"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "297428384518-m7to44928fvmo3m17d2nij4bq74e5ob5.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
     }
   ],
   "configuration_version": "1"

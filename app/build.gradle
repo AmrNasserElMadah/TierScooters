@@ -9,28 +9,72 @@ plugins {
     id 'com.google.firebase.crashlytics'
 }
 
+def buildType = "Development"
 android {
-    compileSdk 31
+    androidExtensions {
+        experimental = true
+    }
 
+    testOptions {
+        unitTests.returnDefaultValues = true
+    }
+
+    compileSdkVersion rootProject.COMPILE_SDK_VERSION
     defaultConfig {
-        applicationId "com.tier.scooters"
-        minSdk 21
-        targetSdk 31
+        applicationId APP_ID
+
+        minSdkVersion rootProject.MIN_SDK_VERSION
+
+        targetSdkVersion rootProject.TARGET_SDK_VERSION
         versionCode 1
         versionName "1.0"
 
-        testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
-        vectorDrawables {
-            useSupportLibrary true
-        }
+        testInstrumentationRunner rootProject.TEST_INSTRUMENTATION_RUNNER
+        vectorDrawables.useSupportLibrary = true
+        multiDexEnabled true
     }
 
     buildTypes {
         release {
+            shrinkResources true
+            minifyEnabled true
+            proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
+        }
+
+        debug {
+            shrinkResources false
             minifyEnabled false
-            proguardFiles getDefaultProguardFile('proguard-android-optimize.txt'), 'proguard-rules.pro'
+            proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
         }
     }
+
+    flavorDimensions "developer"
+
+    productFlavors.all {
+        buildType = "Development"
+        buildConfigField "String", "BuildType", "\"" + buildType + "\""
+
+    }
+    productFlavors {
+        development {
+            applicationIdSuffix ".development"
+            dimension "developer"
+            buildType = "Development"
+            buildConfigField "String", "BuildType", "\"" + buildType + "\""
+        }
+        staging {
+            applicationIdSuffix ".staging"
+            dimension "developer"
+            buildType = "Staging"
+            buildConfigField "String", "BuildType", "\"" + buildType + "\""
+        }
+        production {
+            dimension "developer"
+            buildType = "Production"
+            buildConfigField "String", 'BuildType', "\"" + buildType + "\""
+        }
+    }
+
     compileOptions {
         sourceCompatibility JavaVersion.VERSION_1_8
         targetCompatibility JavaVersion.VERSION_1_8
@@ -41,13 +85,20 @@ android {
     buildFeatures {
         compose true
     }
-    composeOptions {
-        kotlinCompilerExtensionVersion compose_version
-    }
+
     packagingOptions {
+        exclude("META-INF/*.kotlin_module")
         resources {
             excludes += '/META-INF/{AL2.0,LGPL2.1}'
         }
+    }
+    kotlinOptions {
+        jvmTarget = '1.8'
+        useIR = true
+    }
+    composeOptions {
+        kotlinCompilerExtensionVersion compose_version
+        kotlinCompilerVersion kotlin_version
     }
 }
 
