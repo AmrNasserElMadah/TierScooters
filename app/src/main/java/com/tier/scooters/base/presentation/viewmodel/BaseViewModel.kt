@@ -13,5 +13,8 @@ abstract class BaseViewModel : ViewModel() {
     override fun onCleared() {
         super.onCleared()
         currentJob?.cancel()
+        if (currentJob?.isActive == true) {
+            currentJob?.cancel()
+        }
     }
 }

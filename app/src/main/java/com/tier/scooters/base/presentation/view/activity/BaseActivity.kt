@@ -2,7 +2,7 @@ package com.tier.scooters.base.presentation.view.activity
 
 import android.content.Intent
 import android.view.MenuItem
-import androidx.appcompat.app.AppCompatActivity
+import androidx.activity.ComponentActivity
 import com.google.firebase.analytics.FirebaseAnalytics
 import com.google.firebase.crashlytics.FirebaseCrashlytics
 import com.tier.scooters.R
@@ -14,7 +14,7 @@ import com.tier.scooters.util.EventsConstants
 import com.tier.scooters.util.NetworkUtils
 import javax.inject.Inject
 
-abstract class BaseActivity : AppCompatActivity() {
+abstract class BaseActivity : ComponentActivity() {
     @Inject
     lateinit var app: App
 
@@ -31,10 +31,10 @@ abstract class BaseActivity : AppCompatActivity() {
     ): String {
         when (networkError) {
             is NetworkResponse.NetworkError -> {
-                if (isNetworkConnected) {
-                    errorMessage = getString(R.string.internet_connection_problem)
+                errorMessage = if (isNetworkConnected) {
+                    getString(R.string.internet_connection_problem)
                 } else {
-                    errorMessage = getString(R.string.no_internet_message)
+                    getString(R.string.no_internet_message)
                 }
             }
             is NetworkResponse.AuthorizationError -> {

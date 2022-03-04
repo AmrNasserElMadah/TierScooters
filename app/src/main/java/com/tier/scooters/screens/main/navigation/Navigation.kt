@@ -6,11 +6,13 @@ import com.google.accompanist.navigation.animation.AnimatedNavHost
 import com.google.accompanist.navigation.animation.rememberAnimatedNavController
 import com.tier.scooters.base.presentation.view.activity.BaseActivity
 import com.tier.scooters.base.presentation.view.screens.Screen
+import com.tier.scooters.screens.mapscooters.presentation.viewmodel.ScootersMapViewModel
 
 @OptIn(ExperimentalAnimationApi::class)
 @Composable
 fun Navigation(
-    activity: BaseActivity
+    activity: BaseActivity,
+    scootersMapViewModel: ScootersMapViewModel
 ) {
     val navController = rememberAnimatedNavController()
     AnimatedNavHost(
