@@ -1,6 +1,12 @@
 plugins {
     id 'com.android.application'
-    id 'org.jetbrains.kotlin.android'
+    id 'kotlin-android'
+//    id 'kotlin-parcelize'
+    id 'kotlin-android-extensions'
+    id 'kotlin-kapt'
+    id 'dagger.hilt.android.plugin'
+    id 'com.google.gms.google-services'
+    id 'com.google.firebase.crashlytics'
 }
 
 android {
@@ -47,15 +53,127 @@ android {
 
 dependencies {
 
-    implementation 'androidx.core:core-ktx:1.7.0'
-    implementation "androidx.compose.ui:ui:$compose_version"
-    implementation "androidx.compose.material:material:$compose_version"
-    implementation "androidx.compose.ui:ui-tooling-preview:$compose_version"
-    implementation 'androidx.lifecycle:lifecycle-runtime-ktx:2.3.1'
-    implementation 'androidx.activity:activity-compose:1.3.1'
-    testImplementation 'junit:junit:4.13.2'
-    androidTestImplementation 'androidx.test.ext:junit:1.1.3'
-    androidTestImplementation 'androidx.test.espresso:espresso-core:3.4.0'
-    androidTestImplementation "androidx.compose.ui:ui-test-junit4:$compose_version"
-    debugImplementation "androidx.compose.ui:ui-tooling:$compose_version"
+    //Kotlin
+    implementation fileTree(dir: 'libs', include: ['*.jar'])
+    implementation "org.jetbrains.kotlin:kotlin-stdlib-jdk7:$kotlin_version"
+    //JetpackCompose
+    implementation jetpackComposeDependencies.jetpackComposeUi
+
+    //ActivityCompose
+    androidTestImplementation jetpackComposeDependencies.activityCompose
+
+    // Tooling support (Previews, etc.)
+    implementation jetpackComposeDependencies.jetpackComposeUiTooling
+    implementation jetpackComposeDependencies.jetpackComposeUiToolingPreview
+    // Foundation (Border, Background, Box, Image, Scroll, shapes, animations, etc.)
+    implementation jetpackComposeDependencies.jetpackComposeFoundation
+    // Material Design
+    implementation jetpackComposeDependencies.jetpackComposeMaterial
+    // Material design icons
+    implementation jetpackComposeDependencies.jetpackComposeMaterialIconsCore
+    implementation jetpackComposeDependencies.jetpackComposeMaterialIconsExtended
+    // Integration with observables
+    implementation jetpackComposeDependencies.jetpackComposeRuntimeLiveData
+
+    //Accompanist
+    implementation accompanistComposeDependencies.accompanistComposePager
+    implementation accompanistComposeDependencies.accompanistComposeNavigationAnimation
+    implementation accompanistComposeDependencies.accompanistComposeInsets
+    implementation accompanistComposeDependencies.accompanistComposeInsetsUi
+    implementation accompanistComposeDependencies.accompanistComposeSystemUiController
+    implementation accompanistComposeDependencies.accompanistComposePermissions
+    implementation accompanistComposeDependencies.accompanistComposeSwipeRefresh
+
+    // UI Tests
+    androidTestImplementation jetpackComposeDependencies.jetpackComposeUiTestJunit4
+
+    //Android support library
+    implementation supportLibraryDependencies.appcompat
+    implementation supportLibraryDependencies.materialDesign
+
+    //Chucker
+    debugImplementation chuckerDependencies.debugChucker
+    releaseImplementation chuckerDependencies.releaseChucker
+
+    //Android architecture components
+    implementation architectureComponentsDependencies.archLifecycleExtensions
+    implementation architectureComponentsDependencies.archLifecycleRuntime
+    implementation architectureComponentsDependencies.archLifecycleRuntimeKtx
+    implementation architectureComponentsDependencies.archLifecycleJava8
+    implementation architectureComponentsDependencies.viewmodel
+
+    //Dagger-Hilt
+    implementation daggerHiltDependencies.daggerHilt
+    kapt daggerHiltDependencies.daggerHiltCompiler
+    implementation daggerHiltDependencies.daggerHiltAndroidXViewModel
+    kapt daggerHiltDependencies.daggerHiltAndroidXCompiler
+
+    //Coroutines
+    implementation coroutinesDependencies.coroutinesCore
+    implementation coroutinesDependencies.coroutinesAndroid
+
+    //Sdp - ssp
+    implementation dataDependencies.sdpAndroid
+    implementation dataDependencies.sspAndroid
+
+    //Network
+    implementation retrofitDependencies.retrofit
+    implementation retrofitDependencies.converterScalars
+    implementation retrofitDependencies.converterGson
+    implementation retrofitDependencies.okhttp
+    implementation retrofitDependencies.okhttpLogging
+    implementation dataDependencies.okhttpFacebook
+    implementation ioGrpcDependencies.ioGrpcOkHttp
+
+    //Permissions
+    implementation permissionsDependencies.checkPermission
+
+    //Firebase
+    implementation googleFirebaseDependencies.firebaseCrashlytics
+    implementation googleFirebaseDependencies.firebaseMessaging
+    implementation googleFirebaseDependencies.firebaseCore
+    implementation googleFirebaseDependencies.firebaseAnalytics
+    implementation googleFirebaseDependencies.firebaseInAppMessagingDisplay
+    implementation googleFirebaseDependencies.firebasePerf
+    implementation googleFirebaseDependencies.firebaseConfig
+    implementation googleFirebaseDependencies.firebaseDynamicLinks
+    implementation googleFirebaseDependencies.firebaseAuth
+    implementation googleDependencies.playServiceAnalytics
+    implementation googleDependencies.guava
+
+    //Parcel
+    implementation dataDependencies.parcelerApi
+    kapt dataDependencies.parceler
+
+    //Leak Canary
+    debugImplementation leakCanaryDependencies.developmentLeakCanary
+
+    //Unit testing
+    testImplementation unitTestingDependencies.jUnit
+    testImplementation unitTestingDependencies.mockitoInline
+    testImplementation unitTestingDependencies.mockitoKotlin
+    testImplementation unitTestingDependencies.archLifecycleCoreTesting
+    testImplementation unitTestingDependencies.assertjCore
+    testImplementation unitTestingDependencies.kotlinTest
+
+    //Instrumentation & UI testing
+    androidTestImplementation instrumentationAndUiTestingDependencies.testRunner
+    androidTestImplementation instrumentationAndUiTestingDependencies.testRules
+    androidTestImplementation instrumentationAndUiTestingDependencies.espressoCore
+    androidTestImplementation instrumentationAndUiTestingDependencies.espressoContrib
+    implementation instrumentationAndUiTestingDependencies.espressoIdlingResource
+    androidTestImplementation instrumentationAndUiTestingDependencies.mockitoKotlin
+    androidTestImplementation instrumentationAndUiTestingDependencies.mockitoAndroid
+    androidTestImplementation unitTestingDependencies.kotlinTest
+
+    //Testing
+    testImplementation dataTestDependencies.testCore
+    testImplementation dataTestDependencies.mockito
+    androidTestImplementation dataTestDependencies.testCore
+    androidTestImplementation dataTestDependencies.testingJUnitKtx
+    androidTestImplementation dataTestDependencies.mockito
+
+    //coil for image loading for compose
+    implementation imageLoadingDependencies.coilForCompose
+
 }

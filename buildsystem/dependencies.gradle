@@ -1,0 +1,380 @@
+ext {
+    // App dependencies
+    appcompat = '1.4.1'
+    material_design = '1.5.0'
+    recycler_view = '1.2.1'
+    androidxLegacyVersion = '1.0.0'
+    androidXWorkVersion = '2.7.0-beta01'
+
+    androidLifecycleVersion = '2.2.0'
+    archLifecycleVersion = '2.3.1'
+    viewModelLifecycleVersion = '2.4.0-alpha02'
+    arch_persistence = '2.4.2'
+    constraintLayoutComposeVersion = '1.0.0-beta02'
+
+    // Test dependencies
+    junit = '4.13.2'
+    mockito_inline = '4.3.1'
+    mockito_kotlin = '1.6.0'
+    arch_lifecycle_core_testing = '2.1.0'
+    assertj_core = '3.22.0'
+
+    //Testing
+    robolectricVersion = '4.6.1'
+    testRunnerVersion = '1.4.0'
+    testJUnitKtx = '1.1.3'
+    mockitoVersion = '4.3.1'
+    dexmakerVersion = '1.0'
+    testingSupportLibVersion = '0.1'
+
+    // Instrumentation-test dependencies
+    test_runner = '1.4.0'
+    test_rules = '1.4.0'
+    espresso_core = '3.4.0'
+    dexopener = "0.12.1"
+    mockito_android = '4.3.1'
+    kotlinTest = "2.0.7"
+
+    // Development
+    leakCanaryVersion = '2.8.1'
+    chuckerVersion = '3.5.1'
+
+    // Data Dependencies
+    dagger = '2.21'
+    daggerHiltVersion = '2.37'
+    daggerHiltAndroidXVersion = '1.0.0-alpha03'
+    sdp_android = '1.0.6'
+
+    // RX
+    rx_java = '2.2.5'
+    rx_android = '2.1.0'
+
+    // Retrofit
+    retrofit = '2.9.0'
+    okhttp = '5.0.0-alpha.5'
+    okhttp_logging = '5.0.0-alpha.5'
+
+    // Coroutines
+    coroutinesVersion = '1.3.2'
+
+    // Data Binding
+    dataBindingVersion = '2.21'
+
+    // Check permissions
+    checkPermissionsVersion = '1.0.6'
+
+    // Parceler
+    okhttp_facebook = '1.6.0'
+    parceler_api = '1.1.13'
+
+    // SwipeRefreshLayout
+    swipe_refresh_layout = '1.1.0'
+
+    //Glide
+    glideVersion = '4.13.0'
+
+    //Firebase
+    firebaseCrashLyticsVersion = '18.1.0'
+    firebaseMessagingVersion = '22.0.0'
+    firebaseCoreVersion = '19.0.0'
+    firebaseAnalyticsVersion = '19.0.0'
+    firebaseInAppMessagingDisplayVersion = '20.0.0'
+    firebasePerfVersion = '20.0.2'
+    firebaseConfigVersion = '21.0.0'
+    firebaseDynamicLinksVersion = '20.1.1'
+    firebaseAuthVersion = '21.0.1'
+
+    //Google
+    playServiceAnalyticsVersion = '18.0.1'
+    guavaVersion = '30.1.1-jre'
+    locationVersion = '18.0.0'
+
+    //IoGrpc
+    ioGrpcVersion = '1.40.0'
+
+    //MixPanel
+    mixPanelVersion = '5.+'
+
+    //NavigationComponent
+    navigationComponentVersion = '2.3.5'
+    navigationComponentComposeVersion = '2.4.0-alpha08'
+
+    //FlashBar
+    flashBarVersion = '1.0.3'
+
+    //JetpackCompose
+    jetpackComposeVersion = '1.0.2'
+    activityComposeVersion = '1.3.0'
+    accompanistComposeVersion = '0.18.0'
+    dataStoreVersion = '1.0.0'
+    pagingVersion = '1.0.0-alpha14'
+
+    //Camera X
+    cameraxVersion = '1.0.1'
+    cameraXViewVersion = '1.0.0-alpha28'
+
+    //Google Ml Kit
+    googleMlKitVersion = '17.0.0'
+
+    //image compressing
+    compressorVersion = '3.0.1'
+
+    //coil version for image loading
+    coilVersion = '1.4.0'
+
+    //Zendesk chat
+    zendeskVersion = '5.0.0'
+
+    // Packages
+    androidXLifecycle = 'androidx.lifecycle'
+    androidXActivityPackage = 'androidx.activity'
+    ioGrpcPackage = 'io.grpc'
+    jetpackComposeUiPackage = 'androidx.compose.ui'
+    jetpackComposeFoundationPackage = 'androidx.compose.foundation'
+    jetpackComposeMaterialPackage = 'androidx.compose.material'
+    jetpackComposeRuntimePackage = 'androidx.compose.runtime'
+    reactivePackage = 'io.reactivex.rxjava2'
+    daggerPackage = 'com.google.dagger'
+    daggerAndroidXPackage = 'androidx.hilt'
+    coroutinesPackage = 'org.jetbrains.kotlinx'
+    dataBindingPackage = 'com.android.databinding'
+    googleFirebasePackage = 'com.google.firebase'
+    mixPanelPackage = 'com.mixpanel.android'
+    navigationComponentPackage = 'androidx.navigation'
+    flashBarPackage = 'com.andrognito.flashbar'
+    androidXLegacyPackage = 'androidx.legacy'
+    androidXWorkPackage = 'androidx.work'
+    googleAccompanistPackage = 'com.google.accompanist'
+    dataStorePackage = 'androidx.datastore'
+    cameraXPackage = 'androidx.camera'
+    googleMlKitPackage = 'com.google.mlkit'
+    zendeskPackage = 'com.zendesk'
+
+    supportLibraryDependencies = [
+            appcompat     : "androidx.appcompat:appcompat:$appcompat",
+            materialDesign: "com.google.android.material:material:$material_design"
+    ]
+
+    ioGrpcDependencies = [
+            ioGrpcOkHttp: buildDependency(ioGrpcPackage, 'grpc-okhttp', ioGrpcVersion),
+    ]
+
+    jetpackComposeDependencies = [
+            jetpackComposeUi                   : buildDependency(jetpackComposeUiPackage, 'ui', jetpackComposeVersion),
+            jetpackComposeUiTooling            : buildDependency(jetpackComposeUiPackage, 'ui-tooling', jetpackComposeVersion),
+            jetpackComposeUiToolingPreview     : buildDependency(jetpackComposeUiPackage, 'ui-tooling-preview', jetpackComposeVersion),
+            jetpackComposeUiTestJunit4         : buildDependency(jetpackComposeUiPackage, 'ui-test-junit4', jetpackComposeVersion),
+            jetpackComposeFoundation           : buildDependency(jetpackComposeFoundationPackage, 'foundation', jetpackComposeVersion),
+            jetpackComposeMaterial             : buildDependency(jetpackComposeMaterialPackage, 'material', jetpackComposeVersion),
+            jetpackComposeMaterialIconsCore    : buildDependency(jetpackComposeMaterialPackage, 'material-icons-core', jetpackComposeVersion),
+            jetpackComposeMaterialIconsExtended: buildDependency(jetpackComposeMaterialPackage, 'material-icons-extended', jetpackComposeVersion),
+            jetpackComposeRuntimeLiveData      : buildDependency(jetpackComposeRuntimePackage, 'runtime-livedata', jetpackComposeVersion),
+            jetpackComposeRuntimeRxJava2       : buildDependency(jetpackComposeRuntimePackage, 'runtime-rxjava2', jetpackComposeVersion),
+            activityCompose                    : buildDependency(androidXActivityPackage, 'activity-compose', activityComposeVersion)
+    ]
+
+    accompanistComposeDependencies = [
+            accompanistComposePager              : buildDependency(googleAccompanistPackage, 'accompanist-pager', accompanistComposeVersion),
+            accompanistComposeNavigationAnimation: buildDependency(googleAccompanistPackage, 'accompanist-navigation-animation', accompanistComposeVersion),
+            accompanistComposeInsets             : buildDependency(googleAccompanistPackage, 'accompanist-insets', accompanistComposeVersion),
+            accompanistComposeInsetsUi           : buildDependency(googleAccompanistPackage, 'accompanist-insets-ui', accompanistComposeVersion),
+            accompanistComposeSystemUiController : buildDependency(googleAccompanistPackage, 'accompanist-systemuicontroller', accompanistComposeVersion),
+            accompanistComposePermissions        : buildDependency(googleAccompanistPackage, 'accompanist-permissions', accompanistComposeVersion),
+            accompanistComposeSwipeRefresh       : buildDependency(googleAccompanistPackage, 'accompanist-swiperefresh', accompanistComposeVersion)
+    ]
+
+    jetpackDataStoreDependencies = [
+            dataStore           : buildDependency(dataStorePackage, 'datastore', dataStoreVersion),
+            dataStorePreferences: buildDependency(dataStorePackage, 'datastore-preferences', dataStoreVersion)
+    ]
+
+    recyclerViewDependencies = [
+            recyclerView: "androidx.recyclerview:recyclerview:$recycler_view"
+    ]
+
+    jetpackComposePagingDependency = [
+            paging3: "androidx.paging:paging-compose:$pagingVersion"
+    ]
+
+    androidXDependencies = [
+            androidXLegacy: buildDependency(androidXLegacyPackage, 'legacy-support-v4', androidxLegacyVersion),
+            "androidXWork": buildDependency(androidXWorkPackage, 'work-runtime-ktx', androidXWorkVersion)
+    ]
+
+    flashBarDependencies = [
+            flashBar: buildDependency(flashBarPackage, 'flashbar', flashBarVersion)
+    ]
+
+    architectureComponentsDependencies = [
+            archLifecycleExtensions: buildDependency(androidXLifecycle, 'lifecycle-extensions', androidLifecycleVersion),
+            archLifecycleRuntime   : buildDependency(androidXLifecycle, 'lifecycle-runtime', archLifecycleVersion),
+            archLifecycleRuntimeKtx: buildDependency(androidXLifecycle, 'lifecycle-runtime-ktx', archLifecycleVersion),
+            archLifecycleJava8     : buildDependency(androidXLifecycle, 'lifecycle-common-java8', archLifecycleVersion),
+            viewmodel              : buildDependency(androidXLifecycle, 'lifecycle-viewmodel-ktx', viewModelLifecycleVersion)
+    ]
+
+    //Dagger
+    daggerDependencies = [
+            dagger                : buildDependency(daggerPackage, 'dagger', dagger),
+            daggerCompiler        : buildDependency(daggerPackage, 'dagger-compiler', dagger),
+            daggerAndroid         : buildDependency(daggerPackage, 'dagger-android', dagger),
+            daggerAndroidSupport  : buildDependency(daggerPackage, 'dagger-android-support', dagger),
+            daggerAndroidProcessor: buildDependency(daggerPackage, 'dagger-android-processor', dagger)
+    ]
+
+    daggerHiltDependencies = [
+            daggerHilt                 : buildDependency(daggerPackage, 'hilt-android', daggerHiltVersion),
+            daggerHiltCompiler         : buildDependency(daggerPackage, 'hilt-android-compiler', daggerHiltVersion),
+            daggerHiltAndroidXViewModel: buildDependency(daggerAndroidXPackage, 'hilt-lifecycle-viewmodel', daggerHiltAndroidXVersion),
+            daggerHiltAndroidXCompiler : buildDependency(daggerAndroidXPackage, 'hilt-compiler', daggerHiltAndroidXVersion)
+    ]
+
+    //Network libraries
+    retrofitDependencies = [
+            retrofit        : "com.squareup.retrofit2:retrofit:${retrofit}",
+            converterScalars: "com.squareup.retrofit2:converter-scalars:${retrofit}",
+            retrofitRx      : "com.squareup.retrofit2:adapter-rxjava2:${retrofit}",
+            converterGson   : "com.squareup.retrofit2:converter-gson:${retrofit}",
+            okhttp          : "com.squareup.okhttp3:okhttp:${okhttp}",
+            okhttpLogging   : "com.squareup.okhttp3:logging-interceptor:${okhttp_logging}"
+    ]
+
+    //Coroutines
+    coroutinesDependencies = [
+            coroutinesCore   : buildDependency(coroutinesPackage, 'kotlinx-coroutines-core', coroutinesVersion),
+            coroutinesAndroid: buildDependency(coroutinesPackage, 'kotlinx-coroutines-android', coroutinesVersion)
+    ]
+
+    rxDependencies = [
+            rxJava   : buildDependency(reactivePackage, 'rxjava', rx_java),
+            rxAndroid: buildDependency(reactivePackage, 'rxandroid', rx_android)]
+
+    roomDependencies = [
+            roomRuntime : "androidx.room:room-runtime:$arch_persistence",
+            roomCompiler: "androidx.room:room-compiler:$arch_persistence"
+    ]
+
+    constraintLayoutComposeDependencies = [
+            constraintLayoutCompose: "androidx.constraintlayout:constraintlayout-compose:$constraintLayoutComposeVersion"
+    ]
+
+    dataDependencies = [
+            okhttpFacebook: "com.facebook.stetho:stetho-okhttp3:${okhttp_facebook}",
+            parcelerApi   : "org.parceler:parceler-api:${parceler_api}",
+            parceler      : "org.parceler:parceler:${parceler_api}",
+            sdpAndroid    : "com.intuit.sdp:sdp-android:${sdp_android}",
+            sspAndroid    : "com.intuit.ssp:ssp-android:${sdp_android}"
+    ]
+
+    presentationDependencies = [
+            swipeRefreshLayout: "androidx.swiperefreshlayout:swiperefreshlayout:${swipe_refresh_layout}"
+    ]
+
+    dataBindingDependencies = [
+            dataBinding: buildDependency(dataBindingPackage, 'compiler', dataBindingVersion)
+    ]
+
+    unitTestingDependencies = [
+            jUnit                   : "junit:junit:$junit",
+            mockitoInline           : "org.mockito:mockito-inline:$mockito_inline",
+            mockitoKotlin           : "com.nhaarman:mockito-kotlin:$mockito_kotlin",
+            archLifecycleCoreTesting: "androidx.arch.core:core-testing:$arch_lifecycle_core_testing",
+            assertjCore             : "org.assertj:assertj-core:$assertj_core",
+            kotlinTest              : "io.kotlintest:kotlintest:$kotlinTest"
+    ]
+
+    instrumentationAndUiTestingDependencies = [
+            testRunner            : "androidx.test:runner:$test_runner",
+            testRules             : "androidx.test:rules:$test_rules",
+            espressoCore          : "androidx.test.espresso:espresso-core:$espresso_core",
+            espressoContrib       : "androidx.test.espresso:espresso-contrib:$espresso_core",
+            espressoIdlingResource: "androidx.test.espresso:espresso-idling-resource:$espresso_core",
+            dexOpener             : "com.github.tmurakami:dexopener:$dexopener",
+            mockitoKotlin         : "com.nhaarman:mockito-kotlin:$mockito_kotlin",
+            mockitoAndroid        : "org.mockito:mockito-android:$mockito_android"
+    ]
+
+    dataTestDependencies = [
+            testCore       : "androidx.test:core:${testRunnerVersion}",
+            testingJUnitKtx: "androidx.test.ext:junit-ktx:${testJUnitKtx}",
+            mockito        : "org.mockito:mockito-core:${mockitoVersion}",
+            robolectric    : "org.robolectric:robolectric:${robolectricVersion}"
+    ]
+
+    presentationTestDependencies = [
+            dexmaker         : "com.google.dexmaker:dexmaker:${dexmakerVersion}",
+            dexmakerMockito  : "com.google.dexmaker:dexmaker-mockito:${dexmakerVersion}",
+            testingSupportLib: "com.android.support.test:testing-support-lib:${testingSupportLibVersion}"
+    ]
+
+    permissionsDependencies = [
+            checkPermission: "com.github.illiashenkoo:startask-permissions:${checkPermissionsVersion}"
+    ]
+
+    chuckerDependencies = [
+            debugChucker  : "com.github.ChuckerTeam.Chucker:library:${chuckerVersion}",
+            releaseChucker: "com.github.ChuckerTeam.Chucker:library-no-op:${chuckerVersion}"
+    ]
+
+    leakCanaryDependencies = [
+            developmentLeakCanary: "com.squareup.leakcanary:leakcanary-android:${leakCanaryVersion}",
+    ]
+
+    imageLoadingDependencies = [
+            glide         : "com.github.bumptech.glide:glide:${glideVersion}",
+            coil          : "io.coil-kt:coil:${coilVersion}",
+            coilForCompose: "io.coil-kt:coil-compose:${coilVersion}"
+    ]
+
+    googleFirebaseDependencies = [
+            firebaseCrashlytics          : buildDependency(googleFirebasePackage, 'firebase-crashlytics-ktx', firebaseCrashLyticsVersion),
+            firebaseMessaging            : buildDependency(googleFirebasePackage, 'firebase-messaging-ktx', firebaseMessagingVersion),
+            firebaseCore                 : buildDependency(googleFirebasePackage, 'firebase-core', firebaseCoreVersion),
+            firebaseAnalytics            : buildDependency(googleFirebasePackage, 'firebase-analytics-ktx', firebaseAnalyticsVersion),
+            firebaseInAppMessagingDisplay: buildDependency(googleFirebasePackage, 'firebase-inappmessaging-display', firebaseInAppMessagingDisplayVersion),
+            firebasePerf                 : buildDependency(googleFirebasePackage, 'firebase-perf', firebasePerfVersion),
+            firebaseConfig               : buildDependency(googleFirebasePackage, 'firebase-config', firebaseConfigVersion),
+            firebaseDynamicLinks         : buildDependency(googleFirebasePackage, 'firebase-dynamic-links-ktx', firebaseDynamicLinksVersion),
+            firebaseAuth                 : buildDependency(googleFirebasePackage, 'firebase-auth-ktx', firebaseAuthVersion),
+    ]
+
+    googleDependencies = [
+            playServiceAnalytics: "com.google.android.gms:play-services-analytics:${playServiceAnalyticsVersion}",
+            guava               : "com.google.guava:guava:${guavaVersion}",
+            location            : "com.google.android.gms:play-services-location:${locationVersion}"
+    ]
+
+    mixPanelDependencies = [
+            mixPanelAndroid: buildDependency(mixPanelPackage, 'mixpanel-android', mixPanelVersion)
+    ]
+
+    navigationComponentDependencies = [
+            navigationFragmentKtx            : buildDependency(navigationComponentPackage, 'navigation-fragment-ktx', navigationComponentVersion),
+            navigationUiKtx                  : buildDependency(navigationComponentPackage, 'navigation-ui-ktx', navigationComponentVersion),
+            navigationDynamicFeaturesFragment: buildDependency(navigationComponentPackage, 'navigation-dynamic-features-fragment', navigationComponentVersion),
+            navigationTesting                : buildDependency(navigationComponentPackage, 'navigation-testing', navigationComponentVersion),
+            navigationCompose                : buildDependency(navigationComponentPackage, 'navigation-compose', navigationComponentComposeVersion),
+    ]
+
+    cameraXDependencies = [
+            coreLibrary     : buildDependency(cameraXPackage, 'camera-camera2', cameraxVersion),
+            cameraXLifecycle: buildDependency(cameraXPackage, 'camera-lifecycle', cameraxVersion),
+            cameraXView     : buildDependency(cameraXPackage, 'camera-view', cameraXViewVersion)
+    ]
+
+    googleMlDependencies = [
+            barcodeScanning: buildDependency(googleMlKitPackage, 'barcode-scanning', googleMlKitVersion)
+    ]
+
+    compressorDependencies = [
+            compressor: "id.zelory:compressor:${compressorVersion}"
+    ]
+
+    zendeskDependencies = [
+            zendeskSupport: buildDependency(zendeskPackage, 'support', zendeskVersion)
+    ]
+}
+
+static def buildDependency(def pack, def dependency, def version) {
+    return "${pack}:${dependency}:${version}"
+}

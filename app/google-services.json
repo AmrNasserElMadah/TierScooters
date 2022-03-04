@@ -1,0 +1,39 @@
+{
+  "project_info": {
+    "project_number": "297428384518",
+    "project_id": "tierscooters",
+    "storage_bucket": "tierscooters.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:297428384518:android:7d6a59833296585d9abc87",
+        "android_client_info": {
+          "package_name": "com.tier.scooters"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "297428384518-m7to44928fvmo3m17d2nij4bq74e5ob5.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyA-kF41CYsucoyafTwPH8mENYdka0ojDaA"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "297428384518-m7to44928fvmo3m17d2nij4bq74e5ob5.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
