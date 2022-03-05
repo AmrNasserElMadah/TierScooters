@@ -14,7 +14,9 @@ import com.tier.scooters.base.presentation.view.activity.BaseActivity
 import com.tier.scooters.base.presentation.view.theme.TierScootersAppTheme
 import com.tier.scooters.screens.main.navigation.Navigation
 import com.tier.scooters.screens.mapscooters.presentation.viewmodel.ScootersMapViewModel
+import dagger.hilt.android.AndroidEntryPoint
 
+@AndroidEntryPoint
 class MainActivity : BaseActivity() {
 
     private val scootersMapViewModel: ScootersMapViewModel by viewModels()

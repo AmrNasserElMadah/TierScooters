@@ -14,7 +14,10 @@ class AuthInterceptor : Interceptor {
         authorisedRequest = authorisedRequest.newBuilder()
             .addHeader(
                 "secret-key",
-                "$2b$10$\\VE0tRqquld4OBl7LDeo9v.afsyRXFlXcQzmj1KpEB6K1wG2okzQcK"
+                "$2b$10\$VE0tRqquld4OBl7LDeo9v.afsyRXFlXcQzmj1KpEB6K1wG2okzQcK"
+            ).addHeader(
+                "Content-Type",
+                "application/json"
             )
             .build()
         return chain.proceed(authorisedRequest)

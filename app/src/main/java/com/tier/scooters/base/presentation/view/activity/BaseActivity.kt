@@ -8,6 +8,7 @@ import com.google.firebase.crashlytics.FirebaseCrashlytics
 import com.tier.scooters.R
 import com.tier.scooters.application.App
 import com.tier.scooters.base.data.remote.network.response.NetworkResponse
+import com.tier.scooters.base.data.remote.network.response.error.GenericError
 import com.tier.scooters.screens.main.presentation.view.activity.MainActivity
 import com.tier.scooters.util.Constants
 import com.tier.scooters.util.EventsConstants
@@ -59,6 +60,10 @@ abstract class BaseActivity : ComponentActivity() {
             is NetworkResponse.UnknownError -> {
                 errorMessage =
                     getString(R.string.unknown_error_message)
+            }
+            is NetworkResponse.ApiBodyError -> {
+                errorMessage =
+                    (networkError.body as GenericError).message
             }
             else -> {
                 errorMessage =

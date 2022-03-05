@@ -11,7 +11,6 @@ import com.tier.scooters.screens.mapscooters.domain.interactor.remote.LoadScoote
 import dagger.hilt.android.lifecycle.HiltViewModel
 import kotlinx.coroutines.flow.catch
 import kotlinx.coroutines.flow.collect
-import kotlinx.coroutines.flow.onCompletion
 import kotlinx.coroutines.flow.onStart
 import kotlinx.coroutines.launch
 import javax.inject.Inject
@@ -23,6 +22,10 @@ class ScootersMapViewModel @Inject constructor(
     private val _response = mutableStateOf<Response<List<Scooter>>>(Response.Loading(true))
     val response: State<Response<List<Scooter>>> = _response
 
+    init {
+        loadScooters()
+    }
+
     fun loadScooters() {
         initializeJob(viewModelScope.launch {
             loadScootersUseCase.build()
@@ -30,10 +33,7 @@ class ScootersMapViewModel @Inject constructor(
                     _response.value = Response.Loading(true)
                 }
                 .catch {
-                    _response.value = Response.UnknownError(it)
-                }
-                .onCompletion {
-                    _response.value = Response.Loading(false)
+                    _response.value = Response.Error()
                 }
                 .collect {
                     when (it) {
@@ -43,14 +43,10 @@ class ScootersMapViewModel @Inject constructor(
                             }
                         }
                         else -> {
-                            _response.value = Response.KnownError(it)
+                            _response.value = Response.Error(it)
                         }
                     }
                 }
         })
-    }
-
-    fun clearData() {
-        _response.value = Response.Loading(true)
     }
 }

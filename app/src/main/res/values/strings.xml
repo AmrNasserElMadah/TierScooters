@@ -1,5 +1,7 @@
 <resources>
     <string name="app_name">TierScooters</string>
+
+    //General
     <string name="internet_connection_problem">Please check your internet connection.</string>
     <string name="no_internet_message">No internet connection</string>
     <string name="location_permission">Please provide location permission!</string>
@@ -11,6 +13,12 @@
     <string name="unauthenticated_message">You are unauthorized</string>
     <string name="retry">Retry</string>
     <string name="no_data">No Data</string>
-    <string name="permission_settings">Settings</string>
+
+    //Scooters Map Screen
+    <string name="scooters_map_title">Tier Map Scooters</string>
     <string name="gps_permission_required">Please enable GPS to be able to proceed</string>
+    <string name="give_permissions_access">Give permissions access</string>
+    <string name="must_permission_access">"You can't proceed without giving the permissions %s "</string>
+    <string name="to_see_scooters">to see our scooters</string>
+    <string name="open_settings">Open Settings</string>
 </resources>
