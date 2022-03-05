@@ -57,7 +57,7 @@ fun AppCheckPermissionsScreen(
             text =
             stringResource(id = if (requiredPermissionsState.shouldShowRationale) R.string.give_permissions_access else R.string.open_settings)
         )
-    }
+    }, isPermissionsRequired: Boolean = true
 ) {
     LaunchedEffect(key1 = "Check permissions") {
         requiredPermissionsState.launchMultiplePermissionRequest()
@@ -69,6 +69,12 @@ fun AppCheckPermissionsScreen(
         permissionsNotAvailableContent = {
             onPermissionsRationaleScreen?.invoke() ?: onPermissionsNotGrantedScreen.invoke()
         }) {
+        if (isPermissionsRequired) {
+            onPermissionsGrantedScreen.invoke()
+        }
+    }
+
+    if (isPermissionsRequired.not()) {
         onPermissionsGrantedScreen.invoke()
     }
 }

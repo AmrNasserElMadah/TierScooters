@@ -21,4 +21,7 @@
     <string name="must_permission_access">"You can't proceed without giving the permissions %s "</string>
     <string name="to_see_scooters">to see our scooters</string>
     <string name="open_settings">Open Settings</string>
+
+    //Keys
+    <string name="google_maps_key">AIzaSyCf6QOreKk0sjA0N71aez5FYuDcgiMTg1g</string>
 </resources>

@@ -8,10 +8,13 @@ import androidx.compose.foundation.background
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.fillMaxSize
-import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.shape.RoundedCornerShape
-import androidx.compose.material.*
+import androidx.compose.material.ExperimentalMaterialApi
+import androidx.compose.material.ModalBottomSheetLayout
+import androidx.compose.material.ModalBottomSheetValue
+import androidx.compose.material.rememberModalBottomSheetState
 import androidx.compose.runtime.Composable
+import androidx.compose.runtime.rememberCoroutineScope
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.res.stringResource
@@ -21,11 +24,15 @@ import com.tier.scooters.base.data.remote.network.response.NetworkResponse
 import com.tier.scooters.base.presentation.view.activity.BaseActivity
 import com.tier.scooters.base.presentation.view.customviews.AppCheckPermissionsScreen
 import com.tier.scooters.base.presentation.view.customviews.AppLoadingScreen
+import com.tier.scooters.base.presentation.view.customviews.AppMapScreen
 import com.tier.scooters.base.presentation.view.customviews.AppTopBar
 import com.tier.scooters.base.presentation.view.theme.ColorPrimary
 import com.tier.scooters.base.presentation.view.theme.ColorTransparent
 import com.tier.scooters.base.presentation.view.theme.ColorWhite
+import com.tier.scooters.screens.mapscooters.data.local.ScooterClusterItem
 import com.tier.scooters.screens.mapscooters.presentation.viewmodel.ScootersMapViewModel
+import com.tier.scooters.screens.scooterdetails.presentation.view.screen.ScooterDetailsBottomSheetScreen
+import kotlinx.coroutines.launch
 
 @OptIn(ExperimentalMaterialApi::class)
 @Composable
@@ -44,8 +51,7 @@ fun ScootersMapScreen(
     ModalBottomSheetLayout(
         sheetState = bottomSheetState,
         sheetContent = {
-            //Todo : Add bottom sheet for scooter details
-            Text(text = "test")
+            ScooterDetailsBottomSheetScreen(scooter = scootersMapViewModel.selectedScooterMarker.value)
         },
         sheetBackgroundColor = ColorWhite,
         sheetShape = RoundedCornerShape(
@@ -77,8 +83,7 @@ fun ScootersMapScreen(
                     onPermissionsGrantedScreen = {
                         AppLoadingScreen(
                             containerModifier = Modifier
-                                .fillMaxSize()
-                                .padding(all = com.intuit.sdp.R.dimen._10sdp.toDp()),
+                                .fillMaxSize(),
                             isError = response.error != null,
                             errorMessage = activity.getErrorMessage(
                                 response.error ?: NetworkResponse.Initialization()
@@ -88,16 +93,28 @@ fun ScootersMapScreen(
                                 scootersMapViewModel.loadScooters()
                             },
                             content = {
+                                val coroutineScope = rememberCoroutineScope()
 
-                            }
-                        )
+                                AppMapScreen(context = activity,
+                                    clusterItems = scootersMapViewModel.response.value.data,
+                                    onMarkerClicked = { selectedScooterMarker ->
+                                        coroutineScope.launch {
+                                            bottomSheetState.animateTo(ModalBottomSheetValue.Expanded)
+                                        }
+                                        scootersMapViewModel.setSelectedScooterMarker(
+                                            scootersMapViewModel.convertToScooterModel(
+                                                selectedScooterMarker as ScooterClusterItem
+                                            )
+                                        )
+                                    })
+                            })
                     },
                     openSettings = {
                         val intent = Intent(Settings.ACTION_APPLICATION_DETAILS_SETTINGS)
                         val uri: Uri = Uri.fromParts("package", activity.packageName, null)
                         intent.data = uri
                         activity.startActivity(intent)
-                    }
+                    },
                 )
             }
         }
