@@ -88,6 +88,7 @@ ext {
     playServiceAnalyticsVersion = '18.0.1'
     guavaVersion = '30.1.1-jre'
     locationVersion = '18.0.0'
+    mapsUtilsVersion = '3.2.0'
 
     //IoGrpc
     ioGrpcVersion = '1.40.0'
@@ -341,7 +342,9 @@ ext {
     googleDependencies = [
             playServiceAnalytics: "com.google.android.gms:play-services-analytics:${playServiceAnalyticsVersion}",
             guava               : "com.google.guava:guava:${guavaVersion}",
-            location            : "com.google.android.gms:play-services-location:${locationVersion}"
+            location            : "com.google.android.gms:play-services-location:${locationVersion}",
+            mapsUtils           : "com.google.maps.android:maps-utils-ktx:${mapsUtilsVersion}",
+
     ]
 
     mixPanelDependencies = [

@@ -193,9 +193,8 @@ dependencies {
     implementation googleDependencies.playServiceAnalytics
     implementation googleDependencies.guava
 
-    //Google maps compose
-    implementation 'com.google.maps.android:android-maps-utils:2.2.3'
-    implementation 'com.google.maps.android:maps-utils-ktx:3.2.0'
+    //Google maps
+    implementation googleDependencies.mapsUtils
 
     //Leak Canary
     debugImplementation leakCanaryDependencies.developmentLeakCanary

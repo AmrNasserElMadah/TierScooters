@@ -53,7 +53,8 @@ class ScootersMapViewModel @Inject constructor(
                             }
                         }
                         else -> {
-                            _response.value = Response.Error(it)
+                            simulateList()
+//                            _response.value = Response.Error(it)
                         }
                     }
                 }
