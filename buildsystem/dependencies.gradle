@@ -343,8 +343,7 @@ ext {
             playServiceAnalytics: "com.google.android.gms:play-services-analytics:${playServiceAnalyticsVersion}",
             guava               : "com.google.guava:guava:${guavaVersion}",
             location            : "com.google.android.gms:play-services-location:${locationVersion}",
-            mapsUtils           : "com.google.maps.android:maps-utils-ktx:${mapsUtilsVersion}",
-
+            mapsUtils           : "com.google.maps.android:maps-utils-ktx:${mapsUtilsVersion}"
     ]
 
     mixPanelDependencies = [

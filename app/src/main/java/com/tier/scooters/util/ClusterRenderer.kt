@@ -1,9 +1,9 @@
 package com.tier.scooters.util
 
+import android.annotation.SuppressLint
 import android.content.Context
 import android.graphics.drawable.Drawable
 import android.widget.TextView
-import androidx.core.graphics.drawable.toBitmap
 import com.google.android.gms.maps.GoogleMap
 import com.google.android.gms.maps.model.BitmapDescriptorFactory
 import com.google.android.gms.maps.model.MarkerOptions
@@ -21,27 +21,29 @@ class ClusterRenderer(
 ) :
     DefaultClusterRenderer<ClusterItem>(context, map, clusterManager) {
     private val mClusterIconGenerator = IconGenerator(context)
-    override fun onBeforeClusterItemRendered(
-        item: ClusterItem,
-        markerOptions: MarkerOptions
-    ) {
-        val clusterIcon: Drawable = context.resources.getDrawable(R.drawable.ic_launcher_foreground)
-        val markerDescriptor =
-            BitmapDescriptorFactory.fromBitmap(clusterIcon.toBitmap())
-        markerOptions.icon(markerDescriptor)
-    }
 
+    @SuppressLint("UseCompatLoadingForDrawables")
     override fun onBeforeClusterRendered(
         cluster: Cluster<ClusterItem?>,
         markerOptions: MarkerOptions
     ) {
+        val clusterIcon: Drawable = context.resources.getDrawable(R.drawable.ic_circle_shape)
+        mClusterIconGenerator.setBackground(clusterIcon)
+
         val isLessLimit = cluster.size < 10
         val tvClusterSize = TextView(context)
         tvClusterSize.text = if (isLessLimit) cluster.size.toString() else "+9"
         tvClusterSize.textSize =
             context.resources.getDimensionPixelOffset(com.intuit.ssp.R.dimen._4ssp).toFloat()
-        tvClusterSize.setTextColor(context.resources.getColor(R.color.colorPrimary))
+        tvClusterSize.setTextColor(context.resources.getColor(android.R.color.white))
         mClusterIconGenerator.setContentView(tvClusterSize)
+
+        mClusterIconGenerator.setContentPadding(
+            context.resources.getDimensionPixelOffset(if (isLessLimit) com.intuit.sdp.R.dimen._10sdp else com.intuit.sdp.R.dimen._7sdp),
+            context.resources.getDimensionPixelOffset(com.intuit.sdp.R.dimen._5sdp),
+            0, 0
+        )
+
         val icon = mClusterIconGenerator.makeIcon()
         markerOptions.icon(BitmapDescriptorFactory.fromBitmap(icon))
     }
