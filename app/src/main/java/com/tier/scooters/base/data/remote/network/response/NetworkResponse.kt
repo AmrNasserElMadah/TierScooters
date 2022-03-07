@@ -23,8 +23,6 @@ sealed class NetworkResponse<out T : Any, out U : Any> {
     data class UnknownError(val error: Throwable?) : NetworkResponse<Nothing, Nothing>()
 }
 
-typealias GenericResponse<RESPONSE, ERROR> = NetworkResponse<RESPONSE, ERROR>
-
 fun NetworkResponse<Any, Any>.isNeedingShowError() = this is NetworkResponse.NetworkError
         || this is NetworkResponse.AuthorizationError
         || this is NetworkResponse.MaintenanceError

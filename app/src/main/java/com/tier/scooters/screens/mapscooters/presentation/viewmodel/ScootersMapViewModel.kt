@@ -3,6 +3,7 @@ package com.tier.scooters.screens.mapscooters.presentation.viewmodel
 import androidx.compose.runtime.State
 import androidx.compose.runtime.mutableStateOf
 import androidx.lifecycle.viewModelScope
+import com.tier.scooters.base.data.fake.DataGenerator.TestDataGenerator.getFakeScootersList
 import com.tier.scooters.base.data.mapper.ScooterMapper
 import com.tier.scooters.base.data.remote.model.Scooter
 import com.tier.scooters.base.data.remote.network.response.NetworkResponse
@@ -47,13 +48,19 @@ class ScootersMapViewModel @Inject constructor(
                     when (it) {
                         is NetworkResponse.Success -> {
                             it.body?.let { scooters ->
-                                _response.value = Response.Success(scooters.results.map { scooter ->
+                                _response.value = Response.Success(scooters.map { scooter ->
                                     mapper.to(scooter)
                                 })
                             }
                         }
                         else -> {
-                            simulateList()
+                            //Todo : To use simulate list
+                            _response.value =
+                                Response.Success(getFakeScootersList().map { scooter ->
+                                    mapper.to(
+                                        scooter
+                                    )
+                                })
 //                            _response.value = Response.Error(it)
                         }
                     }
@@ -67,17 +74,4 @@ class ScootersMapViewModel @Inject constructor(
 
     fun convertToScooterModel(scooterClusterItem: ScooterClusterItem) =
         mapper.from(scooterClusterItem)
-
-    //Todo delete this function when the api is working fine
-    private fun simulateList() {
-        val scootersList = arrayListOf<Scooter>()
-        for (i in 0..10) {
-            scootersList.add(
-                Scooter("", "Test$i", 30.0 + i, 30.0 + i)
-            )
-        }
-        _response.value =
-            Response.Success(scootersList.map { scooter -> mapper.to(scooter) })
-//
-    }
 }

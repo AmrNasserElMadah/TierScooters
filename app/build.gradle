@@ -153,6 +153,7 @@ dependencies {
     implementation architectureComponentsDependencies.archLifecycleRuntimeKtx
     implementation architectureComponentsDependencies.archLifecycleJava8
     implementation architectureComponentsDependencies.viewmodel
+    implementation architectureComponentsDependencies.archLifecycleLiveData
 
     //Dagger-Hilt
     implementation daggerHiltDependencies.daggerHilt
@@ -163,6 +164,7 @@ dependencies {
     //Coroutines
     implementation coroutinesDependencies.coroutinesCore
     implementation coroutinesDependencies.coroutinesAndroid
+    implementation coroutinesDependencies.coroutinesTest
 
     //Sdp - ssp
     implementation dataDependencies.sdpAndroid
